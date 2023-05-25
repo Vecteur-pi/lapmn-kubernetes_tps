@@ -1,10 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f docker-compose.yaml
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
   labels:
     io.kompose.service: db
   name: db
@@ -36,13 +32,5 @@ spec:
               value: exampleuser
           image: mysql:5.7
           name: db
-          resources: {}
-          volumeMounts:
-            - mountPath: /var/lib/mysql
-              name: db
-      restartPolicy: Always
-      volumes:
-        - name: db
-          persistentVolumeClaim:
-            claimName: db
+
 status: {}
